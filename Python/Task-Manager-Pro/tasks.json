@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "title": "Learn Python",
+        "priority": "High",
+        "status": "completed",
+        "due_date": "2026-06-10"
+    }
+]
