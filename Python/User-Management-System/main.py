@@ -1,7 +1,7 @@
 import json
 
 
-FILE_NAME = r"C:\Users\Admin\Desktop\Study\AWS\project1\users.json"
+FILE_NAME = "users.json"
 
 def load_users():
     # Code to load users from a file or database
@@ -20,7 +20,12 @@ def add_user():
     users = load_users()
 
     name = input("Enter name: ")
-    age = int(input("Enter age: "))
+    try:
+        age = int(input("Enter age: "))
+    except ValueError:
+        print("Age must be a number.")
+        return
+    
     if age <= 0:
         print("Invalid age")
         return
@@ -45,7 +50,7 @@ def add_user():
 
 def view_users():
     users = load_users()
-    
+    users.sort(key=lambda user: user["name"])
     if not users:
         print("No users found.")
         return
@@ -79,8 +84,16 @@ def update_user():
         if user["name"].lower() == name.lower():
 
             user["name"] = input("Enter new name: ")
-            user["age"] = int(input("Enter new age: "))
+            try:
+                user["age"] = int(input("Enter new age: "))
+            except ValueError:
+                print("Age must be a number.")
+                return
+            
             user["email"] = input("Enter new email: ")
+            if "@" not in user["email"]:
+                print("Invalid email.")
+                return
 
             save_users(users)
             print("User updated successfully!")
