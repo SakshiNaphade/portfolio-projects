@@ -12,6 +12,7 @@ A RESTful API built with Flask for managing tasks. The API supports full CRUD op
 * JSON Data Storage
 * REST API Architecture
 
+
 ## API Endpoints
 
 ### Get All Tasks
